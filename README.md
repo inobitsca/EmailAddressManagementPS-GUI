@@ -1,6 +1,6 @@
 # EmailAddressManagementPS-GUI
  
-# GUI to Manage email addresses using Active Directory PowerShell.
+# GUI to Manage email addresses using Active Directory PowerShell without Exchange.
 #
 #Create/Change Primary email address
 #Add an email alias
