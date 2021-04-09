@@ -11,8 +11,8 @@ FUNCTIONS
 
 REQUIREMENTS
 
--It does not require an Exchange server. 
--Requires ACTIVEDIRECTORY PowerShell module. 
+-It does not require an Exchange server.
+-Requires ACTIVEDIRECTORY PowerShell module.
 -You will need User Admin or Recipient Admin rights.
 
-Created by Cedric Abrahams - cedric@inobits.com	
+------Created by Cedric Abrahams - cedric@inobits.com  ------
