@@ -1,5 +1,5 @@
 EmailAddressManagementPS-GUI
- 
+Version 1.4 2021-04-09
 GUI to Manage email addresses using Active Directory PowerShell without Exchange.
 
 FUNCTIONS
@@ -21,4 +21,3 @@ REQUIREMENTS
 -You will need User Admin or Recipient Admin rights.
 
 Created by Cedric Abrahams - cedric@inobits.com
-Version 1.3 2021-01-05
