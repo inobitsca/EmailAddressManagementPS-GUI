@@ -9,12 +9,12 @@
 #You will need User Admin rights.
 #Created by Cedric Abrahams - cedric@inobits.com
 #
-#Version 1.3 2021-01-05
+#Version 1.4 2021-04-09
 
 
 Import-module Activedirectory
-#$allUsers = Get-adobject -properties mail, proxyaddresses -Filter 'mail -like "*@*"'
 $allUsers = Get-adobject -properties mail, proxyaddresses -Filter 'mail -like "*@*"'
+
 
 
 #Variables
@@ -883,7 +883,7 @@ $result = $ActionForm.ShowDialog()
 
 Function UsedAddressForm {
 Add-Type -AssemblyName System.Windows.Forms
-# Result form2
+# Action Form
 $UsedEmailForm                    = New-Object system.Windows.Forms.Form
 $UsedEmailForm.ClientSize         = '400,100'
 $UsedEmailForm.text               = "Invalid User"
@@ -963,51 +963,17 @@ $TitleOperationChoice.text                      = "Email Address Management"
 $TitleOperationChoice.AutoSize                  = $true
 $TitleOperationChoice.width                     = 25
 $TitleOperationChoice.height                    = 10
-$TitleOperationChoice.location                  = New-Object System.Drawing.Point(20,20)
+$TitleOperationChoice.location                  = New-Object System.Drawing.Point(20,1)
 $TitleOperationChoice.Font                      = 'Microsoft Sans Serif,13'
 
 # Other elemtents
 $Description                     = New-Object system.Windows.Forms.Label
-$Description.text                = "Select a user."
+$Description.text                = "Please select a user."
 $Description.AutoSize            = $false
 $Description.width               = 450
 $Description.height              = 35
-$Description.location            = New-Object System.Drawing.Point(20,50)
+$Description.location            = New-Object System.Drawing.Point(20,120)
 $Description.Font                = 'Microsoft Sans Serif,10'
-$Status                   = New-Object system.Windows.Forms.Label
-$Status.text              = "Please enter the username below"
-$Status.AutoSize          = $true
-$Status.location          = New-Object System.Drawing.Point(20,170)
-$Status.Font              = 'Microsoft Sans Serif,10'
-
-
-#TextBoxLable
-$SearchNameLabel                = New-Object system.Windows.Forms.Label
-$SearchNameLabel.text           = "Search for name: "
-$SearchNameLabel.AutoSize       = $true
-$SearchNameLabel.width          = 25
-$SearchNameLabel.height         = 20
-$SearchNameLabel.location       = New-Object System.Drawing.Point(20,200)
-$SearchNameLabel.Font           = 'Microsoft Sans Serif,10,style=Bold'
-$SearchNameLabel.Visible        = $True
-$AddressForm.Controls.Add($SearchNameLabel)
-
-#TextBox
-$SearchName                     = New-Object system.Windows.Forms.TextBox
-$SearchName.multiline           = $false
-$SearchName.width               = 314
-$SearchName.height              = 20
-$SearchName.location            = New-Object System.Drawing.Point(150,200)
-$SearchName.Font                = 'Microsoft Sans Serif,10'
-$SearchName.Visible             = $True
-$SearchName.Add_KeyDown({
-    if ($_.KeyCode -eq "Enter") 
-    {    
-    FinduserForm
-    }
-})
-
-$AddressForm.Controls.Add($SearchName)
 
 
 #Buttons
@@ -1016,7 +982,7 @@ $FinduserBtn.BackColor         = "#a4ba67"
 $FinduserBtn.text              = "Find User"
 $FinduserBtn.width             = 90
 $FinduserBtn.height            = 30
-$FinduserBtn.location          = New-Object System.Drawing.Point(150,250)
+$FinduserBtn.location          = New-Object System.Drawing.Point(150,110)
 $FinduserBtn.Font              = 'Microsoft Sans Serif,10'
 $FinduserBtn.ForeColor         = "#ffffff"
 $AddressForm.CancelButton   = $cancelBtn
@@ -1037,6 +1003,11 @@ $cancelBtn.DialogResult          = [System.Windows.Forms.DialogResult]::Cancel
 $AddressForm.CancelButton   = $cancelBtn
 $AddressForm.Controls.Add($cancelBtn)
 
+    if ($_.KeyCode -eq "Enter") 
+    {    
+    FinduserForm
+    }
+
 $AddressForm.controls.AddRange(@($TitleOperationChoice,$Description,$Status))
 # Display the form
 $result = $AddressForm.ShowDialog()
@@ -1047,10 +1018,11 @@ $result = $AddressForm.ShowDialog()
 function FindUserForm { 
   Write-host "Select User" -fore Yellow
   #Username to be used in code
-  $Search = $SearchName.text
-  $searchString = "*" + $search + "*"
+  #$Search = $SearchName.text
+  #$searchString = "*" + $search + "*"
   #$ID=get-adobject -filter 'cn -like $searchstring' |Out-GridView -PassThru
-   $ID=$allusers |where {$_.DistinguishedName -like $searchstring} |Out-GridView -PassThru
+  #$ID=$allusers |where {$_.DistinguishedName -like $searchstring} |Out-GridView -PassThru
+$ID=$allusers |Out-GridView -PassThru
 $CN = $ID.DistinguishedName
 $Obj = $ID.ObjectClass
   #Get user data
@@ -1065,8 +1037,8 @@ $Valid = 0
 $user = Get-ADObject $CN -Properties mail, proxyaddresses
 ActionForm 
 }
-
 }
+
 
 ############Form Functions End
 
