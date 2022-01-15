@@ -9,7 +9,7 @@
 #You will need User Admin rights.
 #Created by Cedric Abrahams - cedric@inobits.com
 #
-#Version 1.4 2021-04-09
+#Version 1.4.1 2022-01-14
 
 
 Import-module Activedirectory
@@ -827,7 +827,7 @@ $SearchNameLabel.text           = "You are editing user: $Name "
 $SearchNameLabel.AutoSize       = $true
 $SearchNameLabel.width          = 25
 $SearchNameLabel.height         = 20
-$SearchNameLabel.location       = New-Object System.Drawing.Point(20,200)
+$SearchNameLabel.location       = New-Object System.Drawing.Point(20,100)
 $SearchNameLabel.Font           = 'Microsoft Sans Serif,10,style=Bold'
 $SearchNameLabel.Visible        = $True
 $ActionForm.Controls.Add($SearchNameLabel)
@@ -859,13 +859,13 @@ if ($OperationChoice.text -eq $CheckEmailForm) {CheckEmailForm}
 
 #Cancel Button
 $cancelBtn                       = New-Object system.Windows.Forms.Button
-$cancelBtn.BackColor             = "#ffffff"
-$cancelBtn.text                  = "Cancel"
-$cancelBtn.width                 = 90
+$cancelBtn.BackColor             = "#a4ba67"
+$cancelBtn.text                  = "Change user or Exit"
+$cancelBtn.width                 = 150
 $cancelBtn.height                = 30
 $cancelBtn.location              = New-Object System.Drawing.Point(260,250)
 $cancelBtn.Font                  = 'Microsoft Sans Serif,10'
-$cancelBtn.ForeColor             = "#000fff"
+$cancelBtn.ForeColor             = "#ffffff"
 $cancelBtn.DialogResult          = [System.Windows.Forms.DialogResult]::Cancel
 $ActionForm.CancelButton   = $cancelBtn
 $ActionForm.Controls.Add($cancelBtn)
@@ -992,13 +992,13 @@ $FinduserBtn.Add_Click({ FinduserForm })
 
 #Cancel Button
 $cancelBtn                       = New-Object system.Windows.Forms.Button
-$cancelBtn.BackColor             = "#ffffff"
-$cancelBtn.text                  = "Cancel"
+$cancelBtn.BackColor             = "#000000"
+$cancelBtn.text                  = "Exit"
 $cancelBtn.width                 = 90
 $cancelBtn.height                = 30
-$cancelBtn.location              = New-Object System.Drawing.Point(260,250)
+$cancelBtn.location              = New-Object System.Drawing.Point(150,250)
 $cancelBtn.Font                  = 'Microsoft Sans Serif,10'
-$cancelBtn.ForeColor             = "#000fff"
+$cancelBtn.ForeColor             = "#ffffff"
 $cancelBtn.DialogResult          = [System.Windows.Forms.DialogResult]::Cancel
 $AddressForm.CancelButton   = $cancelBtn
 $AddressForm.Controls.Add($cancelBtn)
