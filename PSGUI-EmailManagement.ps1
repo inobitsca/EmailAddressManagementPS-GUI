@@ -9,11 +9,18 @@
 #You will need User Admin rights.
 #Created by Cedric Abrahams - cedric@inobits.com
 #
-#Version 1.5.1 2022-02-13
+#Version 1.6.0 2022-03-04
 
+##########-Add a Logo (64x64)
+$base64ImageString = "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"
+$imageBytes = [Convert]::FromBase64String($base64ImageString)
+$ms = New-Object IO.MemoryStream($imageBytes, 0, $imageBytes.Length)
+$ms.Write($imageBytes, 0, $imageBytes.Length);
+$img = [System.Drawing.Image]::FromStream($ms, $true)
+#$img = [System.Drawing.Image]::Fromfile('c:\temp4\ok_small.png')
 
 Import-module Activedirectory
-$allUsers = Get-adobject -properties mail, proxyaddresses -Filter 'mail -like "*@*"'
+$allUsers = Get-adobject -properties mail,proxyaddresses,msExchHideFromAddressLists -Filter 'mail -like "*@*"'
 
 
 
@@ -31,10 +38,10 @@ $NewPrimaryForm = 'Change the Primary Address'
 $NewAliasForm = 'Add an Alias Address'
 $DeleteAliasForm = 'Remove an Alias address'
 $CheckEmailForm = 'Check Existing Email Addresess'
-
+$HideFromGAL = "Hide User from GAL"
 
 ############Code Functions Start
-#Set new Primary Address
+######## Set new Primary Address Function ########
 function SetNewPrimary {
 $SourceFunction = 1
 
@@ -64,7 +71,7 @@ set-ADuser -Identity $CN -Add @{Proxyaddresses="SMTP:"+$ChangeEmail.text}
 set-ADuser -Identity $CN -emailaddress $ChangeEmail.text
 Write-Host "Primary User Email Set"
 Write-host "Refreshing User Data"
-$user = Get-ADObject $CN -Properties mail, proxyaddresses
+$user = Get-ADObject $CN -Properties mail,proxyaddresses,msExchHideFromAddressLists
 ResultsForm
 }
 
@@ -76,12 +83,14 @@ set-ADGroup -Identity $CN -Add @{Proxyaddresses="SMTP:"+$ChangeEmail.text}
 set-ADGroup -Identity $CN -emailaddress $ChangeEmail.text
 Write-Host "Primary Group Email Set"
 Write-host "Refreshing User Data"
-$user = Get-ADObject $CN -Properties mail, proxyaddresses
+$user = Get-ADObject $CN -Properties mail,proxyaddresses,msExchHideFromAddressLists
 ResultsForm
 }
 }
 $NewPrimaryForm.close()
 }
+
+######### Add Alias Function ######### 
  
 Function AddAlias {
 $SourceFunction = 2
@@ -101,7 +110,7 @@ if ( $Obj -eq "User"){
 set-ADuser -Identity $CN -Add @{Proxyaddresses="smtp:" + $NewAlias.text }
 Write-Host "Alias Added"
 Write-host "Refreshing User Data"
-$user = Get-ADObject $CN -Properties mail, proxyaddresses
+$user = Get-ADObject $CN -Properties mail,proxyaddresses,msExchHideFromAddressLists
 }
 
 }
@@ -110,11 +119,13 @@ if ( $Obj -eq "Group"){
 set-ADGroup -Identity $CN -Add @{Proxyaddresses="smtp:"+ $NewAlias.text}
 Write-Host "Alias Added"
 Write-host "Refreshing User Data"
-$user = Get-ADObject $CN -Properties mail, proxyaddresses
+$user = Get-ADObject $CN -Properties mail,proxyaddresses,msExchHideFromAddressLists
 }
 ResultsForm
 $AddAliasForm.close()
 }
+
+######### Remove Alias Function #########
 
 Function RemoveAlias {
 $SourceFunction = 3
@@ -128,7 +139,7 @@ set-ADuser -Identity $CN -Remove @{Proxyaddresses="smtp:" + $RemoveAlias.text }
 Write-Host "Alias Removed"
 Write-host "Refreshing User Data"
 
-$user = Get-ADObject $CN -Properties mail, proxyaddresses
+$user = Get-ADObject $CN -Properties mail,proxyaddresses,msExchHideFromAddressLists
 ResultsForm
 }
 
@@ -137,13 +148,28 @@ set-ADGroup -Identity $CN -remove @{Proxyaddresses="smtp:"+ $RemoveAlias.text}
 Write-Host "Alias Removed"
 Write-host "Refreshing User Data"
 
-$user = Get-ADObject $CN -Properties mail, proxyaddresses
+$user = Get-ADObject $CN -Properties mail,proxyaddresses,msExchHideFromAddressLists
 ResultsForm
 }
 }
 $RemoveAliasForm.close()  
 }
 
+#########-Hide from GAL Function #########
+
+Function HideFromGAL {
+$SourceFunction = 4
+
+ If ($checkbox1.CheckState -eq $False) {set-ADuser -Identity $CN -Replace @{msExchHideFromAddressLists=$False}
+ Write-Host "User is not hidden from GAL" -fore Green}
+ If ($checkbox1.CheckState -eq $True) {set-ADuser -Identity $CN -Replace @{msExchHideFromAddressLists=$True}
+Write-Host "User is now hidden from GAL" -fore Yellow }
+$user = Get-ADObject $CN -Properties mail,proxyaddresses,msExchHideFromAddressLists
+ResultsForm
+$HideForm.close() 
+$ActionForm.close()
+ActionForm
+}
 ############Code Functions End 
 
 
@@ -151,7 +177,7 @@ $RemoveAliasForm.close()
 
 function NewPrimaryForm  {
 Add-Type -AssemblyName System.Windows.Forms
-$user = Get-ADObject $CN -Properties mail, proxyaddresses
+$user = Get-ADObject $CN -Properties mail,proxyaddresses,msExchHideFromAddressLists
 # Result form
 $NewPrimaryForm                    = New-Object system.Windows.Forms.Form
 $NewPrimaryForm.ClientSize         = '500,600'
@@ -160,7 +186,15 @@ $NewPrimaryForm.BackColor          = "#bababa"
 
 
 if ($Valid -eq 1)  { [void]$ResultForm2.Close() }
-########### Result Form cont.
+
+#####Add a Logo - Image detils at the start of the script
+$pictureBox = new-object Windows.Forms.PictureBox
+$pictureBox.Location = new-object System.Drawing.Size(430,5)
+$pictureBox.Width = $img.Size.Width
+$pictureBox.Height = $img.Size.Height
+$pictureBox.Image = $img
+$NewPrimaryForm.controls.add($pictureBox)
+
 #Account Name Heading
 $NewPrimaryText                           = New-Object system.Windows.Forms.Label
 $NewPrimaryText.text                      = 'You have chosen to edit user:'
@@ -212,14 +246,14 @@ $NewPrimaryForm.controls.AddRange(@($EmailChoice))
 
 
 # Show Proxy Addresses Heading.
-$EmailTitle                           = New-Object system.Windows.Forms.Label
-$EmailTitle.text                      = 'Current Proxy Addresses:'
-$EmailTitle.AutoSize                  = $true
-$EmailTitle.width                     = 25
-$EmailTitle.height                    = 10
-$EmailTitle.location                  = New-Object System.Drawing.Point(20,125)
-$EmailTitle.Font                      = 'Microsoft Sans Serif,13'
-$NewPrimaryForm.controls.AddRange(@($EmailTitle))
+$ProxyTitle                           = New-Object system.Windows.Forms.Label
+$ProxyTitle.text                      = 'Current Proxy Addresses:'
+$ProxyTitle.AutoSize                  = $true
+$ProxyTitle.width                     = 25
+$ProxyTitle.height                    = 10
+$ProxyTitle.location                  = New-Object System.Drawing.Point(20,125)
+$ProxyTitle.Font                      = 'Microsoft Sans Serif,13'
+$NewPrimaryForm.controls.AddRange(@($ProxyTitle))
 
 $VL = 150
 Foreach ($P in $user.proxyaddresses) {
@@ -314,7 +348,7 @@ $result = $NewPrimaryForm.ShowDialog()
 #Add an Alias Form
 function NewAliasForm {
 Write-Host "NewAliasForm Add Alias"
-$user = Get-ADObject $CN -Properties mail, proxyaddresses
+$user = Get-ADObject $CN -Properties mail,proxyaddresses,msExchHideFromAddressLists
 Add-Type -AssemblyName System.Windows.Forms
 # Add Alias form
 $AddAliasForm                    = New-Object system.Windows.Forms.Form
@@ -324,7 +358,17 @@ $AddAliasForm.BackColor          = "#bababa"
 
 
 if ($Valid -eq 1)  { [void]$ResultForm2.Close() }
-########### Result Form cont.
+
+#####Add a Logo - Image detils at the start of the script
+$pictureBox = new-object Windows.Forms.PictureBox
+$pictureBox.Location = new-object System.Drawing.Size(430,5)
+$pictureBox.Width = $img.Size.Width
+$pictureBox.Height = $img.Size.Height
+$pictureBox.Image = $img
+$AddAliasForm.controls.add($pictureBox)
+
+
+
 #Account Name Heading
 $NewAliasText                           = New-Object system.Windows.Forms.Label
 $NewAliasText.text                      = 'You have chosen to edit user:'
@@ -370,14 +414,14 @@ $AddAliasForm.controls.AddRange(@($EmailChoice))
 
 
 # Show Proxy Addresses Heading.
-$EmailTitle                           = New-Object system.Windows.Forms.Label
-$EmailTitle.text                      = 'Current Alias Addresses:'
-$EmailTitle.AutoSize                  = $true
-$EmailTitle.width                     = 25
-$EmailTitle.height                    = 10
-$EmailTitle.location                  = New-Object System.Drawing.Point(20,125)
-$EmailTitle.Font                      = 'Microsoft Sans Serif,13'
-$AddAliasForm.controls.AddRange(@($EmailTitle))
+$ProxyTitle                           = New-Object system.Windows.Forms.Label
+$ProxyTitle.text                      = 'Current Alias Addresses:'
+$ProxyTitle.AutoSize                  = $true
+$ProxyTitle.width                     = 25
+$ProxyTitle.height                    = 10
+$ProxyTitle.location                  = New-Object System.Drawing.Point(20,125)
+$ProxyTitle.Font                      = 'Microsoft Sans Serif,13'
+$AddAliasForm.controls.AddRange(@($ProxyTitle))
 
 $VL = 150
 Foreach ($P in $user.proxyaddresses) {
@@ -473,7 +517,7 @@ $result = $AddAliasForm.ShowDialog()
 
 #Remove an Alias Form
 function DeleteAliasForm {Add-Type -AssemblyName System.Windows.Forms
-$user = Get-ADObject $CN -Properties mail, proxyaddresses
+$user = Get-ADObject $CN -Properties mail,proxyaddresses,msExchHideFromAddressLists
 # Result form
 $RemoveAliasForm                    = New-Object system.Windows.Forms.Form
 $RemoveAliasForm.ClientSize         = '500,600'
@@ -481,6 +525,14 @@ $RemoveAliasForm.text               = "Email Result Management"
 $RemoveAliasForm.BackColor          = "#bababa"
 
 if ($Valid -eq 1)  { [void]$ResultForm2.Close() }
+
+#####Add a Logo - Image detils at the start of the script
+$pictureBox = new-object Windows.Forms.PictureBox
+$pictureBox.Location = new-object System.Drawing.Size(430,5)
+$pictureBox.Width = $img.Size.Width
+$pictureBox.Height = $img.Size.Height
+$pictureBox.Image = $img
+$RemoveAliasForm.controls.add($pictureBox)
 
 #Account Name Heading
 $RemoveAliasText                           = New-Object system.Windows.Forms.Label
@@ -525,16 +577,16 @@ $EmailChoice.Font                      = 'Microsoft Sans Serif,13,style=Bold'
 $RemoveAliasForm.controls.AddRange(@($EmailChoice))
 
 # Show Proxy Addresses Heading.
-$EmailTitle                           = New-Object system.Windows.Forms.Label
-$EmailTitle.text                      = 'Current Alias Addresses:'
-$EmailTitle.AutoSize                  = $true
-$EmailTitle.width                     = 25
-$EmailTitle.height                    = 10
+$ProxyTitle                           = New-Object system.Windows.Forms.Label
+$ProxyTitle.text                      = 'Current Alias Addresses:'
+$ProxyTitle.AutoSize                  = $true
+$ProxyTitle.width                     = 25
+$ProxyTitle.height                    = 10
 # Position the element
-$EmailTitle.location                  = New-Object System.Drawing.Point(20,125)
+$ProxyTitle.location                  = New-Object System.Drawing.Point(20,125)
 # Define the font type and size
-$EmailTitle.Font                      = 'Microsoft Sans Serif,13'
-$RemoveAliasForm.controls.AddRange(@($EmailTitle))
+$ProxyTitle.Font                      = 'Microsoft Sans Serif,13'
+$RemoveAliasForm.controls.AddRange(@($ProxyTitle))
 
 $VL = 150
 $PRcount = 0
@@ -555,7 +607,7 @@ if ($PRcount -eq 9) {$prx9 = $PR}
 if ($PRcount -eq 10) {$prx10 = $PR}
 if ($PRcount -eq 11) {$prx11 = $PR}
 if ($PRcount -eq 12) {$prx12 = $PR}
-if ($PRcount -gt 3) {$prxExtra1 = "Only first 12 Addresses Shown. Type address to remove"}
+if ($PRcount -gt 1) {$prxExtra1 = "Only first 12 Addresses Shown. Type address to remove"}
 
 
 # Show Proxy Addresses
@@ -661,7 +713,7 @@ Function ResultsForm {
 if ($user -ne "None") {Write-host "Check Address" $NewEmail -ForegroundColor Green
 $res = $true
 
-$user = get-adobject $CN -Properties mail,proxyaddresses
+$user = get-adobject $CN -Properties mail,proxyaddresses,msExchHideFromAddressLists
 Write-host "Resultsform"
 
 # Process form
@@ -670,25 +722,40 @@ $ResultsForm.ClientSize         = '500,600'
 $ResultsForm.text               = "Email Process Management"
 $ResultsForm.BackColor          = "#abdbff"
 
+#####Add a Logo - Image detils at the start of the script
+$pictureBox = new-object Windows.Forms.PictureBox
+$pictureBox.Location = new-object System.Drawing.Size(430,5)
+$pictureBox.Width = $img.Size.Width
+$pictureBox.Height = $img.Size.Height
+$pictureBox.Image = $img
+$ResultsForm.controls.add($pictureBox)
 
 #Create a Title for our form. We will use a label for it.
 $EmailTitle                           = New-Object system.Windows.Forms.Label
-$EmailTitle.text                      = 'Email Addresses for ' + $user.name + " (" +$SearchName.Text +  ')'
+$EmailTitle.text                      = 'Email Addresses for ' + $user.name
 $EmailTitle.AutoSize                  = $true
-$EmailTitle.location                  = New-Object System.Drawing.Point(20,25)
+$EmailTitle.location                  = New-Object System.Drawing.Point(20,10)
 $EmailTitle.Font                      = 'Microsoft Sans Serif,13,style=bold'
 $EmailTitle.ForeColor                 = "#151051"
 $ResultsForm.controls.AddRange(@($EmailTitle))
 
+$HideTitle                           = New-Object system.Windows.Forms.Label
+If($user.msExchHideFromAddressLists -eq "True"){$HideTitle.text =  "User is Hidden from Address Book"}
+$HideTitle.AutoSize                  = $true
+$HideTitle.location                  = New-Object System.Drawing.Point(20,40)
+$HideTitle.Font                      = 'Microsoft Sans Serif,13,style=bold'
+$HideTitle.ForeColor                 = "#ff0000"
+$ResultsForm.controls.AddRange(@($HideTitle))
 
-$EmailTitle                           = New-Object system.Windows.Forms.Label
-$EmailTitle.text                      = 'Primary Email Address:'
-$EmailTitle.AutoSize                  = $true
-$EmailTitle.width                     = 25
-$EmailTitle.height                    = 10
-$EmailTitle.location                  = New-Object System.Drawing.Point(20,75)
-$EmailTitle.Font                      = 'Microsoft Sans Serif,13'
-$ResultsForm.controls.AddRange(@($EmailTitle))
+
+$EmailTitle1                           = New-Object system.Windows.Forms.Label
+$EmailTitle1.text                      = 'Primary Email Address:'
+$EmailTitle1.AutoSize                  = $true
+$EmailTitle1.width                     = 25
+$EmailTitle1.height                    = 10
+$EmailTitle1.location                  = New-Object System.Drawing.Point(20,75)
+$EmailTitle1.Font                      = 'Microsoft Sans Serif,13'
+$ResultsForm.controls.AddRange(@($EmailTitle1))
 
 
 # Show Email Address
@@ -702,14 +769,14 @@ $EmailChoice.Font                      = 'Microsoft Sans Serif,13,style=Bold'
 $ResultsForm.controls.AddRange(@($EmailChoice))
 
 # Show Proxy Addresses Heading.
-$EmailTitle                           = New-Object system.Windows.Forms.Label
-$EmailTitle.text                      = 'Alias Addresses:'
-$EmailTitle.AutoSize                  = $true
-$EmailTitle.width                     = 25
-$EmailTitle.height                    = 10
-$EmailTitle.location                  = New-Object System.Drawing.Point(20,150)
-$EmailTitle.Font                      = 'Microsoft Sans Serif,13'
-$ResultsForm.controls.AddRange(@($EmailTitle))
+$ProxyTitle                           = New-Object system.Windows.Forms.Label
+$ProxyTitle.text                      = 'Alias Addresses:'
+$ProxyTitle.AutoSize                  = $true
+$ProxyTitle.width                     = 25
+$ProxyTitle.height                    = 10
+$ProxyTitle.location                  = New-Object System.Drawing.Point(20,150)
+$ProxyTitle.Font                      = 'Microsoft Sans Serif,13'
+$ResultsForm.controls.AddRange(@($ProxyTitle))
 
 $VL = 175
 Foreach ($P in $user.proxyaddresses) {
@@ -752,12 +819,12 @@ $ResultsForm.Controls.Add($cancelBtn)
 #Main Action Form
 
 Function ActionForm {
-
+$user = Get-ADObject $CN -Properties mail,proxyaddresses,msExchHideFromAddressLists
 Add-Type -AssemblyName System.Windows.Forms
 # Create a new form
 $ActionForm                    = New-Object system.Windows.Forms.Form
 # Define the size, title and background color
-$ActionForm.ClientSize         = '500,300'
+$ActionForm.ClientSize         = '400,400'
 $ActionForm.text               = "Email Address Management"
 $ActionForm.BackColor          = "#ffffff"
 
@@ -771,8 +838,13 @@ $TitleOperationChoice.location                  = New-Object System.Drawing.Poin
 $TitleOperationChoice.Font                      = 'Microsoft Sans Serif,13'
 
 # Other elemtents
-
-
+#####Add a Logo - Image detils at the start of the script
+$pictureBox = new-object Windows.Forms.PictureBox
+$pictureBox.Location = new-object System.Drawing.Size(330,5)
+$pictureBox.Width = $img.Size.Width
+$pictureBox.Height = $img.Size.Height
+$pictureBox.Image = $img
+$ActionForm.controls.add($pictureBox)
 
 
 $Name = $ID.name
@@ -801,6 +873,15 @@ $SearchNameName.Font           = 'Microsoft Sans Serif,10,style=Bold'
 $SearchNameName.Visible        = $True
 $ActionForm.Controls.Add($SearchNameName)
 
+$HideTitle                           = New-Object system.Windows.Forms.Label
+If($user.msExchHideFromAddressLists -eq "True"){$HideTitle.text =  "User is Hidden from Address Book"}
+$HideTitle.AutoSize                  = $true
+$HideTitle.location                  = New-Object System.Drawing.Point(20,85)
+$HideTitle.Font                      = 'Microsoft Sans Serif,13,style=bold'
+$HideTitle.ForeColor                 = "#ff0000"
+$ActionForm.controls.AddRange(@($HideTitle))
+
+
 #Buttons
 
 #--------------------------------------#
@@ -811,7 +892,7 @@ $NewPrimBtn.BackColor         = "#0000ff"
 $NewPrimBtn.text              = "Set Primary Address"
 $NewPrimBtn.width             = 220
 $NewPrimBtn.height            = 30
-$NewPrimBtn.location          = New-Object System.Drawing.Point(50,90)
+$NewPrimBtn.location          = New-Object System.Drawing.Point(50,120)
 $NewPrimBtn.Font              = 'Microsoft Sans Serif,10'
 $NewPrimBtn.ForeColor         = "#ffffff"
 $ActionForm.CancelButton   = $cancelBtn
@@ -826,7 +907,7 @@ $NewAliasBtn.BackColor         = "#0000ff"
 $NewAliasBtn.text              = "Add Email Alias"
 $NewAliasBtn.width             = 220
 $NewAliasBtn.height            = 30
-$NewAliasBtn.location          = New-Object System.Drawing.Point(50,120)
+$NewAliasBtn.location          = New-Object System.Drawing.Point(50,155)
 $NewAliasBtn.Font              = 'Microsoft Sans Serif,10'
 $NewAliasBtn.ForeColor         = "#ffffff"
 $ActionForm.CancelButton   = $cancelBtn
@@ -841,7 +922,7 @@ $DelAliasBtn.BackColor         = "#0000ff"
 $DelAliasBtn.text              = "Delete Email Alias"
 $DelAliasBtn.width             = 220
 $DelAliasBtn.height            = 30
-$DelAliasBtn.location          = New-Object System.Drawing.Point(50,150)
+$DelAliasBtn.location          = New-Object System.Drawing.Point(50,190)
 $DelAliasBtn.Font              = 'Microsoft Sans Serif,10'
 $DelAliasBtn.ForeColor         = "#ffffff"
 $ActionForm.CancelButton   = $cancelBtn
@@ -849,14 +930,29 @@ $ActionForm.Controls.Add($DelAliasBtn  )
 $DelAliasBtn.Add_Click({ DeleteAliasForm })
 #--------------------------------------#
 
+#Hide From GAL Button
+
+$HideGALBtn                     = New-Object system.Windows.Forms.Button
+$HideGALBtn.BackColor         = "#0000ff"
+$HideGALBtn.text              = "Hide/Unhide user from GAL"
+$HideGALBtn.width             = 220
+$HideGALBtn.height            = 30
+$HideGALBtn.location          = New-Object System.Drawing.Point(50,225)
+$HideGALBtn.Font              = 'Microsoft Sans Serif,10'
+$HideGALBtn.ForeColor         = "#ffffff"
+$ActionForm.CancelButton   = $cancelBtn
+$ActionForm.Controls.Add($HideGALBtn  )
+$HideGALBtn.Add_Click({ HideFromGALForm})
+#--------------------------------------#
+
 #Check Addresses Button
 
 $CheckMailBtn                     = New-Object system.Windows.Forms.Button
-$CheckMailBtn.BackColor         = "#0000ff"
+$CheckMailBtn.BackColor         = "#3b003b"
 $CheckMailBtn.text              = "Check Email Addresses"
 $CheckMailBtn.width             = 220
 $CheckMailBtn.height            = 30
-$CheckMailBtn.location          = New-Object System.Drawing.Point(50,180)
+$CheckMailBtn.location          = New-Object System.Drawing.Point(50,260)
 $CheckMailBtn.Font              = 'Microsoft Sans Serif,10'
 $CheckMailBtn.ForeColor         = "#ffffff"
 $ActionForm.CancelButton   = $cancelBtn
@@ -865,13 +961,14 @@ $CheckMailBtn.Add_Click({ CheckEmailForm })
 #--------------------------------------#
 
 
+
 #Cancel Button
 $cancelBtn                       = New-Object system.Windows.Forms.Button
 $cancelBtn.BackColor             = "#000000"
 $cancelBtn.text                  = "Change user or Exit"
 $cancelBtn.width                 = 150
 $cancelBtn.height                = 30
-$cancelBtn.location              = New-Object System.Drawing.Point(50,250)
+$cancelBtn.location              = New-Object System.Drawing.Point(50,360)
 $cancelBtn.Font                  = 'Microsoft Sans Serif,10'
 $cancelBtn.ForeColor             = "#ffffff"
 $cancelBtn.DialogResult          = [System.Windows.Forms.DialogResult]::Cancel
@@ -936,7 +1033,7 @@ $OperationChoice.text =''
 Function InvalidUserForm {
 # Invalid User Form
 $InvalidUserForm                    = New-Object system.Windows.Forms.Form
-$InvalidUserForm.ClientSize         = '400,100'
+$InvalidUserForm.ClientSize         = '450,100'
 $InvalidUserForm.text               = "Invalid User"
 $InvalidUserForm.BackColor          = "#bababa"
 
@@ -955,13 +1052,13 @@ $InvalidUserForm.controls.AddRange(@($InvalidUserText))
 $InvalidUserForm.ShowDialog()
 
 }
-
+############################## Main Laning Form (Address Form)
 Function AddressForm {
 Add-Type -AssemblyName System.Windows.Forms
 # Create a new form
 $AddressForm                    = New-Object system.Windows.Forms.Form
 # Define the size, title and background color
-$AddressForm.ClientSize         = '330,200'
+$AddressForm.ClientSize         = '400,200'
 $AddressForm.text               = "Email Address Management"
 $AddressForm.BackColor          = "#c2fcf6"
 
@@ -991,7 +1088,7 @@ $FinduserBtn.BackColor         = "#0000ff"
 $FinduserBtn.text              = "Choose a user to manage"
 $FinduserBtn.width             = 190
 $FinduserBtn.height            = 30
-$FinduserBtn.location          = New-Object System.Drawing.Point(40,70)
+$FinduserBtn.location          = New-Object System.Drawing.Point(40,90)
 $FinduserBtn.Font              = 'Microsoft Sans Serif,10'
 $FinduserBtn.ForeColor         = "#ffffff"
 $AddressForm.CancelButton   = $cancelBtn
@@ -1017,6 +1114,15 @@ $BulkBtn.Add_Click({ BulkActionsForm })
 #>
 
 
+###################### add an image/logo
+
+$pictureBox = new-object Windows.Forms.PictureBox
+$pictureBox.Location = new-object System.Drawing.Size(330,5)
+$pictureBox.Width = $img.Size.Width
+$pictureBox.Height = $img.Size.Height
+$pictureBox.Image = $img
+$AddressForm.controls.add($pictureBox)
+
 #Cancel Button
 $cancelBtn                       = New-Object system.Windows.Forms.Button
 $cancelBtn.BackColor             = "#000000"
@@ -1041,7 +1147,7 @@ $result = $AddressForm.ShowDialog()
 
 }
 
- ################ Start Window ###############
+ ################ Choose the User to edit ###############
 function FindUserForm { 
   Write-host "Select User" -fore Yellow
   #Username to be used in code
@@ -1061,10 +1167,112 @@ InvalidUserForm
 }
 if ($CN) {write-host "Username Valid:" $SearchName.Text -ForegroundColor Cyan
 $Valid = 0
-$user = Get-ADObject $CN -Properties mail, proxyaddresses
 ActionForm 
 }
 }
+#>
+ ################ Hide from GAL Form ###############
+function HideFromGALForm{
+	
+	Write-host "Hide From GAL Form" -Fore Green
+    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
+     $Value = "False"
+        # Set the size of your form
+    $HideForm = New-Object System.Windows.Forms.Form
+    $HideForm.width = 500
+    $HideForm.height = 200
+    $HideForm.BackColor          = "#bababa"
+    $HideForm.Text = ”Hidden from Global Address List”
+ 
+    # Set the font of the text to be used within the form
+    $Font = New-Object System.Drawing.Font("Sans Serif",12)
+    $HideForm.Font = $Font
+ 
+ #####Add a Logo - Image detils at the start of the script
+$pictureBox = new-object Windows.Forms.PictureBox
+$pictureBox.Location = new-object System.Drawing.Size(430,5)
+$pictureBox.Width = $img.Size.Width
+$pictureBox.Height = $img.Size.Height
+$pictureBox.Image = $img
+$HideForm.controls.add($pictureBox)
+
+ 
+    # create your checkbox 
+    $checkbox1 = new-object System.Windows.Forms.checkbox
+    $checkbox1.Location = new-object System.Drawing.Size(30,50)
+    $checkbox1.Size = new-object System.Drawing.Size(450,50)
+    $checkbox1.Text = "User is Hidden from Global Address List"
+    if ($User.msExchHideFromAddressLists -ne $true) {$checkbox1.Checked = $False}
+	if ($User.msExchHideFromAddressLists -eq $true) {$checkbox1.Checked = $True}
+    $HideForm.Controls.Add($checkbox1)  
+	
+	$Name = $ID.name
+
+#TextLable
+$SearchNameLabel                = New-Object system.Windows.Forms.Label
+$SearchNameLabel.text           = "You are editing user: "
+$SearchNameLabel.AutoSize       = $true
+$SearchNameLabel.width          = 25
+$SearchNameLabel.height         = 20
+$SearchNameLabel.ForeColor      = "#0000ff"
+$SearchNameLabel.location       = New-Object System.Drawing.Point(30,30)
+$SearchNameLabel.Font           = 'Microsoft Sans Serif,13'
+$SearchNameLabel.Visible        = $True
+$HideForm.Controls.Add($SearchNameLabel)
+
+#TextLable
+$SearchNameName                = New-Object system.Windows.Forms.Label
+$SearchNameName.text           = "$Name"
+$SearchNameName.AutoSize       = $true
+$SearchNameName.width          = 50
+$SearchNameName.height         = 20
+$SearchNameName.ForeColor      = "#ff0000"
+$SearchNameName.location       = New-Object System.Drawing.Point(200,30)
+$SearchNameName.Font           = 'Microsoft Sans Serif,13,style=Bold'
+$SearchNameName.Visible        = $True
+$HideForm.Controls.Add($SearchNameName)
+
+    write-host $checkbox1
+ 
+    # Add an OK button
+    $OKButton = new-object System.Windows.Forms.Button
+    $OKButton.Location = new-object System.Drawing.Size(130,100)
+    $OKButton.Size = new-object System.Drawing.Size(100,40)
+    $OKButton.Text = "OK"
+    $OKButton.Add_Click({
+    
+    If ($checkbox1.CheckState -eq "Checked"){Write-host $checkbox1.CheckState -fore Green}
+    If ($checkbox1.CheckState -eq "Unchecked"){ Write-host $checkbox1.CheckState -fore Red}
+    
+    $HideForm.Close()})
+    $HideForm.Controls.Add($OKButton)
+	$OKButton.Add_Click({ HideFromGAL	})
+ 
+    #Add a cancel button
+    $CancelButton = new-object System.Windows.Forms.Button
+    $CancelButton.Location = new-object System.Drawing.Size(255,100)
+    $CancelButton.Size = new-object System.Drawing.Size(100,40)
+    $CancelButton.Text = "Cancel"
+    $CancelButton.Add_Click({$HideForm.Close()})
+    $HideForm.Controls.Add($CancelButton)
+    
+    ###########  This is the important piece ##############
+    #                                                     #
+    # Do something when the state of the checkbox changes #
+    #######################################################
+    $checkbox1.Add_CheckStateChanged({
+   If ($checkbox1.CheckState -eq $False) { Write-host  "Hidden From GAL" $checkbox1.CheckState -fore Cyan}
+   else { Write-host "Hidden From GAL" $checkbox1.CheckState -fore Yellow}
+    })
+    
+    
+    # Activate the form
+    $HideForm.Add_Shown({$HideForm.Activate()})
+    [void] $HideForm.ShowDialog() 
+}
+
+
 
 ####Bulk Actions Form #######
 function BulkActionsForm {
