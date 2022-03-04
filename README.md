@@ -1,6 +1,7 @@
 EmailAddressManagementPS-GUI
-Version 1.4 2021-04-09
+Version 1.5.0 2022-02-11
 GUI to Manage email addresses using Active Directory PowerShell without Exchange.
+For environments using Office 365 and AAD Connect 
 
 FUNCTIONS
 

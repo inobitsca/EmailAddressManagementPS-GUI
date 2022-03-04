@@ -9,7 +9,7 @@
 #You will need User Admin rights.
 #Created by Cedric Abrahams - cedric@inobits.com
 #
-#Version 1.4.1 2022-01-14
+#Version 1.5.1 2022-02-13
 
 
 Import-module Activedirectory
@@ -42,7 +42,7 @@ $SourceFunction = 1
   Write-host $ID.DistinguishedName
   
 $NewEmail = $ChangeEmail.Text
-$checkmail = "*" + $NewEmail + "*"
+$checkmail = "*:" + $NewEmail + "*"
 Write-host "Checkmail: " $checkmail
 $Check = $null
 $Check = $allUsers |where {$_.DistinguishedName -ne $User -and $_.proxyaddresses -like $checkmail} 
@@ -87,7 +87,7 @@ Function AddAlias {
 $SourceFunction = 2
 Write-host $NewAlias.text
 $NewEmail = $NewAlias.Text
-$checkmail = "*" + $NewEmail + "*"
+$checkmail = "*:" + $NewEmail + "*"
 $check = $null
 $Check = $allUsers |where {$_.proxyaddresses -like $checkmail} 
 If (!$NewEmail) {NoAddressForm
@@ -101,19 +101,18 @@ if ( $Obj -eq "User"){
 set-ADuser -Identity $CN -Add @{Proxyaddresses="smtp:" + $NewAlias.text }
 Write-Host "Alias Added"
 Write-host "Refreshing User Data"
-}
 $user = Get-ADObject $CN -Properties mail, proxyaddresses
-ResultsForm
+}
+
 }
 
 if ( $Obj -eq "Group"){
 set-ADGroup -Identity $CN -Add @{Proxyaddresses="smtp:"+ $NewAlias.text}
 Write-Host "Alias Added"
 Write-host "Refreshing User Data"
-
 $user = Get-ADObject $CN -Properties mail, proxyaddresses
-ResultsForm
 }
+ResultsForm
 $AddAliasForm.close()
 }
 
@@ -277,8 +276,8 @@ Write-host "NewPrimaryForm" $ChangeEmail.text
 
 #Execute Button
 $ExecBtn                   = New-Object system.Windows.Forms.Button
-$ExecBtn.BackColor         = "#a4ba67"
-$ExecBtn.text              = "Execute Changes"
+$ExecBtn.BackColor         = "#ff0000"
+$ExecBtn.text              = "Set Primary Address"
 $ExecBtn.width             = 180
 $ExecBtn.height            = 30
 $ExecBtn.location          = New-Object System.Drawing.Point(20,560)
@@ -291,13 +290,13 @@ $ExecBtn.Add_Click({SetNewPrimary})
 
 #Cancel Button
 $cancelBtn3                       = New-Object system.Windows.Forms.Button
-$cancelBtn3.BackColor             = "#ffffff"
-$cancelBtn3.text                  = "Cancel"
+$cancelBtn3.BackColor             = "#000000"
+$cancelBtn3.text                  = "Exit"
 $cancelBtn3.width                 = 90
 $cancelBtn3.height                = 30
-$cancelBtn3.location              = New-Object System.Drawing.Point(220,560)
+$cancelBtn3.location              = New-Object System.Drawing.Point(210,560)
 $cancelBtn3.Font                  = 'Microsoft Sans Serif,10'
-$cancelBtn3.ForeColor             = "#000fff"
+$cancelBtn3.ForeColor             = "#ffffff"
 $cancelBtn3.DialogResult          = [System.Windows.Forms.DialogResult]::Cancel
 $NewPrimaryForm.CancelButton   = $cancelBtn3
 $NewPrimaryForm.Controls.Add($cancelBtn3)
@@ -310,7 +309,9 @@ Write-host "NewPrimaryForm open Resultsform"
 $result = $NewPrimaryForm.ShowDialog()
 }
 
-#Add an Alias
+#---------------------------------#
+
+#Add an Alias Form
 function NewAliasForm {
 Write-Host "NewAliasForm Add Alias"
 $user = Get-ADObject $CN -Properties mail, proxyaddresses
@@ -439,9 +440,9 @@ $NewAlias.Add_KeyDown({
 
 #Result Buttons
 $ExecBtn                   = New-Object system.Windows.Forms.Button
-$ExecBtn.BackColor         = "#a4ba67"
-$ExecBtn.text              = "Process"
-$ExecBtn.width             = 90
+$ExecBtn.BackColor         = "#ff0000"
+$ExecBtn.text              = "Add Email Alias"
+$ExecBtn.width             = 180
 $ExecBtn.height            = 30
 $ExecBtn.location          = New-Object System.Drawing.Point(20,560)
 $ExecBtn.Font              = 'Microsoft Sans Serif,10'
@@ -452,13 +453,13 @@ $ExecBtn.Add_Click({AddAlias})
 
 #Cancel Button
 $cancelBtn4                       = New-Object system.Windows.Forms.Button
-$cancelBtn4.BackColor             = "#ffffff"
-$cancelBtn4.text                  = "Cancel"
+$cancelBtn4.BackColor             = "#000000"
+$cancelBtn4.text                  = "Exit"
 $cancelBtn4.width                 = 90
 $cancelBtn4.height                = 30
-$cancelBtn4.location              = New-Object System.Drawing.Point(400,560)
+$cancelBtn4.location              = New-Object System.Drawing.Point(210,560)
 $cancelBtn4.Font                  = 'Microsoft Sans Serif,10'
-$cancelBtn4.ForeColor             = "#000fff"
+$cancelBtn4.ForeColor             = "#ffffff"
 $cancelBtn4.DialogResult          = [System.Windows.Forms.DialogResult]::Cancel
 $AddAliasForm.CancelButton   = $cancelBtn4
 $AddAliasForm.Controls.Add($cancelBtn4)
@@ -468,7 +469,9 @@ $cancelBtn4.Add_Click({ $AddAliasForm.close() })
 $result = $AddAliasForm.ShowDialog()
 }
 
-#Remove an Alias
+#-------------------------------------#
+
+#Remove an Alias Form
 function DeleteAliasForm {Add-Type -AssemblyName System.Windows.Forms
 $user = Get-ADObject $CN -Properties mail, proxyaddresses
 # Result form
@@ -478,7 +481,7 @@ $RemoveAliasForm.text               = "Email Result Management"
 $RemoveAliasForm.BackColor          = "#bababa"
 
 if ($Valid -eq 1)  { [void]$ResultForm2.Close() }
-########### Result Form cont.
+
 #Account Name Heading
 $RemoveAliasText                           = New-Object system.Windows.Forms.Label
 $RemoveAliasText.text                      = 'You have chosen to edit user:'
@@ -509,8 +512,6 @@ $EmailTitle.location                  = New-Object System.Drawing.Point(20,75)
 $EmailTitle.Font                      = 'Microsoft Sans Serif,13'
 $RemoveAliasForm.controls.AddRange(@($EmailTitle))
 
-
-
 # Show Email Address
 $EmailChoice                          = New-Object system.Windows.Forms.Label
 $EmailChoice.text                      = $user.mail
@@ -522,8 +523,6 @@ $EmailChoice.location                  = New-Object System.Drawing.Point(20,100)
 # Define the font type and size
 $EmailChoice.Font                      = 'Microsoft Sans Serif,13,style=Bold'
 $RemoveAliasForm.controls.AddRange(@($EmailChoice))
-
-
 
 # Show Proxy Addresses Heading.
 $EmailTitle                           = New-Object system.Windows.Forms.Label
@@ -622,8 +621,8 @@ $RemoveAlias.Add_KeyDown({
 #Result Buttons
 $ExecBtn                   = New-Object system.Windows.Forms.Button
 $ExecBtn.BackColor         = "#FF0000"
-$ExecBtn.text              = "Remove Alias"
-$ExecBtn.width             = 150
+$ExecBtn.text              = "Delete Email Alias"
+$ExecBtn.width             = 180
 $ExecBtn.height            = 30
 $ExecBtn.location          = New-Object System.Drawing.Point(20,560)
 $ExecBtn.Font              = 'Microsoft Sans Serif,10'
@@ -634,13 +633,13 @@ $ExecBtn.Add_Click({ RemoveAlias })
 
 #Cancel Button
 $cancelBtn5                       = New-Object system.Windows.Forms.Button
-$cancelBtn5.BackColor             = "#ffffff"
-$cancelBtn5.text                  = "Cancel"
+$cancelBtn5.BackColor             = "#000000"
+$cancelBtn5.text                  = "Exit"
 $cancelBtn5.width                 = 90
 $cancelBtn5.height                = 30
-$cancelBtn5.location              = New-Object System.Drawing.Point(400,560)
+$cancelBtn5.location              = New-Object System.Drawing.Point(210,560)
 $cancelBtn5.Font                  = 'Microsoft Sans Serif,10'
-$cancelBtn5.ForeColor             = "#000fff"
+$cancelBtn5.ForeColor             = "#ffffff"
 $cancelBtn5.DialogResult          = [System.Windows.Forms.DialogResult]::Cancel
 $RemoveAliasForm.CancelButton   = $cancelBtn5
 $RemoveAliasForm.Controls.Add($cancelBtn5)
@@ -650,7 +649,9 @@ $cancelBtn5.Add_Click({ $RemoveAliasForm.close() })
 $result = $RemoveAliasForm.ShowDialog()
 }
 
-#Check Existing Addresses
+#------------------------------#
+
+#Check Existing Addresses Form
 function CheckEmailForm {
 ResultsForm
 Write-host "Check Existing Addresses"
@@ -729,12 +730,12 @@ $VL = $VL +25}}
 #Cancel Button
 $cancelBtn                       = New-Object system.Windows.Forms.Button
 $cancelBtn.BackColor             = "#ffffff"
-$cancelBtn.text                  = "Close"
+$cancelBtn.text                  = "Exit"
 $cancelBtn.width                 = 90
 $cancelBtn.height                = 30
 $cancelBtn.location              = New-Object System.Drawing.Point(220,560)
 $cancelBtn.Font                  = 'Microsoft Sans Serif,10'
-$cancelBtn.ForeColor             = "#000fff"
+$cancelBtn.ForeColor             = "#000000"
 $cancelBtn.DialogResult          = [System.Windows.Forms.DialogResult]::Cancel
 $ResultsForm.CancelButton   = $cancelBtn
 $ResultsForm.Controls.Add($cancelBtn)
@@ -746,6 +747,9 @@ $ResultsForm.Controls.Add($cancelBtn)
 # Display the form
 [void]$ResultsForm.ShowDialog()
 }}
+
+#--------------------------------#
+#Main Action Form
 
 Function ActionForm {
 
@@ -763,107 +767,111 @@ $TitleOperationChoice.text                      = "Email Address Management"
 $TitleOperationChoice.AutoSize                  = $true
 $TitleOperationChoice.width                     = 25
 $TitleOperationChoice.height                    = 10
-$TitleOperationChoice.location                  = New-Object System.Drawing.Point(20,20)
+$TitleOperationChoice.location                  = New-Object System.Drawing.Point(20,5)
 $TitleOperationChoice.Font                      = 'Microsoft Sans Serif,13'
 
 # Other elemtents
 
 
-$Description                     = New-Object system.Windows.Forms.Label
-$Description.text                = "Please Choose you option below."
-$Description.AutoSize            = $false
-$Description.width               = 450
-$Description.height              = 35
-$Description.location            = New-Object System.Drawing.Point(20,50)
-$Description.Font                = 'Microsoft Sans Serif,10'
-$Status                   = New-Object system.Windows.Forms.Label
-$Status.text              = "Please enter the username below"
-$Status.AutoSize          = $true
-$Status.location          = New-Object System.Drawing.Point(20,170)
-$Status.Font              = 'Microsoft Sans Serif,10'
 
-
-
-#Dropdown Text Box
-#TextBoxLable
-$OperationChoiceLabel                = New-Object system.Windows.Forms.Label
-$OperationChoiceLabel.text           = "Select Option:"
-$OperationChoiceLabel.AutoSize       = $true
-$OperationChoiceLabel.width          = 25
-$OperationChoiceLabel.height         = 20
-$OperationChoiceLabel.location       = New-Object System.Drawing.Point(20,130)
-$OperationChoiceLabel.Font           = 'Microsoft Sans Serif,13,style=Bold'
-$OperationChoiceLabel.Visible        = $True
-$ActionForm.Controls.Add($OperationChoiceLabel)
-
-$OperationChoice                     = New-Object system.Windows.Forms.ComboBox
-$OperationChoice.text                = "Choose"
-$OperationChoice.width               = 200
-$OperationChoice.autosize            = $true
-$OperationChoice.Visible             = $true        
-# Add the items in the dropdown list
-@("Choose an option",$NewPrimaryForm,$NewAliasForm,$DeleteAliasForm,$CheckEmailForm) | ForEach-Object {[void] $OperationChoice.Items.Add($_)}
-# Select the default value
-$OperationChoice.SelectedIndex       = 0
-$OperationChoice.location            = New-Object System.Drawing.Point(150,130)
-$OperationChoice.ForeColor           = "#016113"
-$OperationChoice.Add_KeyDown({
-    if ($_.KeyCode -eq "Enter") 
-    {    
-if ($OperationChoice.text -eq $NewPrimaryForm) {NewPrimaryForm}
-if ($OperationChoice.text -eq $NewAliasForm) {NewAliasForm}
-if ($OperationChoice.text -eq $DeleteAliasForm) {DeleteAliasForm}
-if ($OperationChoice.text -eq $CheckEmailForm) {CheckEmailForm}
-#if ($OperationChoice.text -eq $sub5) {Sub5}
-    }
-})
-$ActionForm.Controls.Add($OperationChoice)
 
 $Name = $ID.name
 
-#TextBoxLable
+#TextLable
 $SearchNameLabel                = New-Object system.Windows.Forms.Label
-$SearchNameLabel.text           = "You are editing user: $Name "
+$SearchNameLabel.text           = "You are editing user: "
 $SearchNameLabel.AutoSize       = $true
 $SearchNameLabel.width          = 25
 $SearchNameLabel.height         = 20
-$SearchNameLabel.location       = New-Object System.Drawing.Point(20,100)
+$SearchNameLabel.ForeColor      = "#0000ff"
+$SearchNameLabel.location       = New-Object System.Drawing.Point(20,60)
 $SearchNameLabel.Font           = 'Microsoft Sans Serif,10,style=Bold'
 $SearchNameLabel.Visible        = $True
 $ActionForm.Controls.Add($SearchNameLabel)
 
-
+#TextLable
+$SearchNameName                = New-Object system.Windows.Forms.Label
+$SearchNameName.text           = "$Name"
+$SearchNameName.AutoSize       = $true
+$SearchNameName.width          = 50
+$SearchNameName.height         = 20
+$SearchNameName.ForeColor      = "#ff0000"
+$SearchNameName.location       = New-Object System.Drawing.Point(160,60)
+$SearchNameName.Font           = 'Microsoft Sans Serif,10,style=Bold'
+$SearchNameName.Visible        = $True
+$ActionForm.Controls.Add($SearchNameName)
 
 #Buttons
-$ExecuteBtn                   = New-Object system.Windows.Forms.Button
-$ExecuteBtn.BackColor         = "#a4ba67"
-$ExecuteBtn.text              = "Execute"
-$ExecuteBtn.width             = 90
-$ExecuteBtn.height            = 30
-$ExecuteBtn.location          = New-Object System.Drawing.Point(150,250)
-$ExecuteBtn.Font              = 'Microsoft Sans Serif,10'
-$ExecuteBtn.ForeColor         = "#ffffff"
+
+#--------------------------------------#
+# New Primary Button
+
+$NewPrimBtn                    = New-Object system.Windows.Forms.Button
+$NewPrimBtn.BackColor         = "#0000ff"
+$NewPrimBtn.text              = "Set Primary Address"
+$NewPrimBtn.width             = 220
+$NewPrimBtn.height            = 30
+$NewPrimBtn.location          = New-Object System.Drawing.Point(50,90)
+$NewPrimBtn.Font              = 'Microsoft Sans Serif,10'
+$NewPrimBtn.ForeColor         = "#ffffff"
 $ActionForm.CancelButton   = $cancelBtn
-$ActionForm.Controls.Add($ExecuteBtn)
+$ActionForm.Controls.Add($NewPrimBtn )
+$NewPrimBtn.Add_Click({ NewPrimaryForm })
+#--------------------------------------#
 
+#New Alias Button
 
-$ExecuteBtn.Add_Click({ 
-if ($OperationChoice.text -eq $NewPrimaryForm) {NewPrimaryForm}
-if ($OperationChoice.text -eq $NewAliasForm) {NewAliasForm}
-if ($OperationChoice.text -eq $DeleteAliasForm) {DeleteAliasForm}
-if ($OperationChoice.text -eq $CheckEmailForm) {CheckEmailForm}
-#if ($OperationChoice.text -eq $sub5) {Sub5}
- })
+$NewAliasBtn                     = New-Object system.Windows.Forms.Button
+$NewAliasBtn.BackColor         = "#0000ff"
+$NewAliasBtn.text              = "Add Email Alias"
+$NewAliasBtn.width             = 220
+$NewAliasBtn.height            = 30
+$NewAliasBtn.location          = New-Object System.Drawing.Point(50,120)
+$NewAliasBtn.Font              = 'Microsoft Sans Serif,10'
+$NewAliasBtn.ForeColor         = "#ffffff"
+$ActionForm.CancelButton   = $cancelBtn
+$ActionForm.Controls.Add($NewAliasBtn )
+$NewAliasBtn.Add_Click({ NewAliasForm })
+#--------------------------------------#
 
+#Delete Alias Button
+
+$DelAliasBtn                     = New-Object system.Windows.Forms.Button
+$DelAliasBtn.BackColor         = "#0000ff"
+$DelAliasBtn.text              = "Delete Email Alias"
+$DelAliasBtn.width             = 220
+$DelAliasBtn.height            = 30
+$DelAliasBtn.location          = New-Object System.Drawing.Point(50,150)
+$DelAliasBtn.Font              = 'Microsoft Sans Serif,10'
+$DelAliasBtn.ForeColor         = "#ffffff"
+$ActionForm.CancelButton   = $cancelBtn
+$ActionForm.Controls.Add($DelAliasBtn  )
+$DelAliasBtn.Add_Click({ DeleteAliasForm })
+#--------------------------------------#
+
+#Check Addresses Button
+
+$CheckMailBtn                     = New-Object system.Windows.Forms.Button
+$CheckMailBtn.BackColor         = "#0000ff"
+$CheckMailBtn.text              = "Check Email Addresses"
+$CheckMailBtn.width             = 220
+$CheckMailBtn.height            = 30
+$CheckMailBtn.location          = New-Object System.Drawing.Point(50,180)
+$CheckMailBtn.Font              = 'Microsoft Sans Serif,10'
+$CheckMailBtn.ForeColor         = "#ffffff"
+$ActionForm.CancelButton   = $cancelBtn
+$ActionForm.Controls.Add($CheckMailBtn  )
+$CheckMailBtn.Add_Click({ CheckEmailForm })
+#--------------------------------------#
 
 
 #Cancel Button
 $cancelBtn                       = New-Object system.Windows.Forms.Button
-$cancelBtn.BackColor             = "#a4ba67"
+$cancelBtn.BackColor             = "#000000"
 $cancelBtn.text                  = "Change user or Exit"
 $cancelBtn.width                 = 150
 $cancelBtn.height                = 30
-$cancelBtn.location              = New-Object System.Drawing.Point(260,250)
+$cancelBtn.location              = New-Object System.Drawing.Point(50,250)
 $cancelBtn.Font                  = 'Microsoft Sans Serif,10'
 $cancelBtn.ForeColor             = "#ffffff"
 $cancelBtn.DialogResult          = [System.Windows.Forms.DialogResult]::Cancel
@@ -900,7 +908,7 @@ $UsedEmailText.location                  = New-Object System.Drawing.Point(20,10
 $UsedEmailText.Font                      = 'Microsoft Sans Serif,13'
 $UsedEmailForm.controls.AddRange(@($UsedEmailText))
 $UsedEmailForm.ShowDialog()
-$OperationChoice.text =''
+#$OperationChoice.text =''
 }
 
 Function NoAddressForm {
@@ -926,7 +934,7 @@ $OperationChoice.text =''
 }
 
 Function InvalidUserForm {
-# Ivalid User Form
+# Invalid User Form
 $InvalidUserForm                    = New-Object system.Windows.Forms.Form
 $InvalidUserForm.ClientSize         = '400,100'
 $InvalidUserForm.text               = "Invalid User"
@@ -953,13 +961,13 @@ Add-Type -AssemblyName System.Windows.Forms
 # Create a new form
 $AddressForm                    = New-Object system.Windows.Forms.Form
 # Define the size, title and background color
-$AddressForm.ClientSize         = '500,300'
+$AddressForm.ClientSize         = '330,200'
 $AddressForm.text               = "Email Address Management"
-$AddressForm.BackColor          = "#ffffff"
+$AddressForm.BackColor          = "#c2fcf6"
 
 # Create a Title for our form. We will use a label for it.
 $TitleOperationChoice                           = New-Object system.Windows.Forms.Label
-$TitleOperationChoice.text                      = "Email Address Management"
+$TitleOperationChoice.text                      = "Email Address Management Tool"
 $TitleOperationChoice.AutoSize                  = $true
 $TitleOperationChoice.width                     = 25
 $TitleOperationChoice.height                    = 10
@@ -968,21 +976,22 @@ $TitleOperationChoice.Font                      = 'Microsoft Sans Serif,13'
 
 # Other elemtents
 $Description                     = New-Object system.Windows.Forms.Label
-$Description.text                = "Please select a user."
+$Description.text                = "This tool is for managing email addresses in Active Directory without the need for an Exchange server."
 $Description.AutoSize            = $false
-$Description.width               = 450
+$Description.width               = 320
 $Description.height              = 35
-$Description.location            = New-Object System.Drawing.Point(20,120)
+$Description.location            = New-Object System.Drawing.Point(20,30)
 $Description.Font                = 'Microsoft Sans Serif,10'
-
+#>
 
 #Buttons
+#Choose a User
 $FinduserBtn                   = New-Object system.Windows.Forms.Button
-$FinduserBtn.BackColor         = "#a4ba67"
-$FinduserBtn.text              = "Find User"
-$FinduserBtn.width             = 90
+$FinduserBtn.BackColor         = "#0000ff"
+$FinduserBtn.text              = "Choose a user to manage"
+$FinduserBtn.width             = 190
 $FinduserBtn.height            = 30
-$FinduserBtn.location          = New-Object System.Drawing.Point(150,110)
+$FinduserBtn.location          = New-Object System.Drawing.Point(40,70)
 $FinduserBtn.Font              = 'Microsoft Sans Serif,10'
 $FinduserBtn.ForeColor         = "#ffffff"
 $AddressForm.CancelButton   = $cancelBtn
@@ -990,13 +999,31 @@ $AddressForm.Controls.Add($FinduserBtn)
 
 $FinduserBtn.Add_Click({ FinduserForm })
 
+#Bulk User Management button - FOR FUTURE USE
+<#
+$BulkBtn                   = New-Object system.Windows.Forms.Button
+$BulkBtn.BackColor         = "#0000ff"
+$BulkBtn.text              = "Bulk Management"
+$BulkBtn.width             = 190
+$BulkBtn.height            = 30
+$BulkBtn.location          = New-Object System.Drawing.Point(40,100)
+$BulkBtn.Font              = 'Microsoft Sans Serif,10'
+$BulkBtn.ForeColor         = "#ffffff"
+$AddressForm.CancelButton   = $cancelBtn
+$AddressForm.Controls.Add($BulkBtn)
+
+$BulkBtn.Add_Click({ BulkActionsForm })
+
+#>
+
+
 #Cancel Button
 $cancelBtn                       = New-Object system.Windows.Forms.Button
 $cancelBtn.BackColor             = "#000000"
 $cancelBtn.text                  = "Exit"
 $cancelBtn.width                 = 90
 $cancelBtn.height                = 30
-$cancelBtn.location              = New-Object System.Drawing.Point(150,250)
+$cancelBtn.location              = New-Object System.Drawing.Point(40,165)
 $cancelBtn.Font                  = 'Microsoft Sans Serif,10'
 $cancelBtn.ForeColor             = "#ffffff"
 $cancelBtn.DialogResult          = [System.Windows.Forms.DialogResult]::Cancel
@@ -1038,6 +1065,12 @@ $user = Get-ADObject $CN -Properties mail, proxyaddresses
 ActionForm 
 }
 }
+
+####Bulk Actions Form #######
+function BulkActionsForm {
+
+}
+
 
 
 ############Form Functions End
