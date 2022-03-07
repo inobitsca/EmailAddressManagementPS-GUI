@@ -3,6 +3,7 @@
 #Create/Change Primary email address
 #Add an email alias
 #Remove an email alias
+#Hide from Address List
 #
 #It does not require an Exchange server. 
 ##Requires ACTIVEDIRECTORY PowerShell module. 
