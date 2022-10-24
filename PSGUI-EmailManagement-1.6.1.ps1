@@ -10,7 +10,7 @@
 #You will need User Admin rights.
 #Created by Cedric Abrahams - cedric@inobits.com
 #
-#Version 1.6.0 2022-03-04
+#Version 1.6.1 2022-10-24
 
 <##########-Add a Logo (64x64) - Does not work with all systems.
 $base64ImageString = "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"
@@ -157,7 +157,7 @@ $RemoveAliasForm.close()
 }
 
 #########-Hide from GAL Function #########
-
+<#
 Function HideFromGAL {
 $SourceFunction = 4
 
@@ -171,6 +171,7 @@ $HideForm.close()
 $ActionForm.close()
 ActionForm
 }
+#>
 ############Code Functions End 
 
 
@@ -1053,7 +1054,7 @@ $InvalidUserForm.controls.AddRange(@($InvalidUserText))
 $InvalidUserForm.ShowDialog()
 
 }
-############################## Main Laning Form (Address Form)
+############################## Main Landing Form (Address Form)
 Function AddressForm {
 Add-Type -AssemblyName System.Windows.Forms
 # Create a new form
@@ -1089,7 +1090,7 @@ $FinduserBtn.BackColor         = "#0000ff"
 $FinduserBtn.text              = "Choose a user to manage"
 $FinduserBtn.width             = 190
 $FinduserBtn.height            = 30
-$FinduserBtn.location          = New-Object System.Drawing.Point(40,90)
+$FinduserBtn.location          = New-Object System.Drawing.Point(40,100)
 $FinduserBtn.Font              = 'Microsoft Sans Serif,10'
 $FinduserBtn.ForeColor         = "#ffffff"
 $AddressForm.CancelButton   = $cancelBtn
@@ -1189,6 +1190,14 @@ function HideFromGALForm{
     # Set the font of the text to be used within the form
     $Font = New-Object System.Drawing.Font("Sans Serif",12)
     $HideForm.Font = $Font
+
+    $HideTitle                           = New-Object system.Windows.Forms.Label
+If($user.msExchHideFromAddressLists -eq "True"){$HideTitle.text =  "User is Hidden from Address Book"}
+$HideTitle.AutoSize                  = $true
+$HideTitle.location                  = New-Object System.Drawing.Point(20,40)
+$HideTitle.Font                      = 'Microsoft Sans Serif,13,style=bold'
+$HideTitle.ForeColor                 = "#ff0000"
+$HideForm.controls.AddRange(@($HideTitle))
  
  #####Add a Logo - Image detils at the start of the script
 $pictureBox = new-object Windows.Forms.PictureBox
@@ -1203,8 +1212,9 @@ $HideForm.controls.add($pictureBox)
     $checkbox1 = new-object System.Windows.Forms.checkbox
     $checkbox1.Location = new-object System.Drawing.Size(30,50)
     $checkbox1.Size = new-object System.Drawing.Size(450,50)
-    $checkbox1.Text = "User is Hidden from Global Address List"
-    if ($User.msExchHideFromAddressLists -ne $true) {$checkbox1.Checked = $False}
+    $checkbox1.Text = "Hide User from Global Address List"
+    if ($User.msExchHideFromAddressLists -ne $true) {$checkbox1.Checked = $False
+     }
 	if ($User.msExchHideFromAddressLists -eq $true) {$checkbox1.Checked = $True}
     $HideForm.Controls.Add($checkbox1)  
 	
@@ -1217,7 +1227,7 @@ $SearchNameLabel.AutoSize       = $true
 $SearchNameLabel.width          = 25
 $SearchNameLabel.height         = 20
 $SearchNameLabel.ForeColor      = "#0000ff"
-$SearchNameLabel.location       = New-Object System.Drawing.Point(30,30)
+$SearchNameLabel.location       = New-Object System.Drawing.Point(30,20)
 $SearchNameLabel.Font           = 'Microsoft Sans Serif,13'
 $SearchNameLabel.Visible        = $True
 $HideForm.Controls.Add($SearchNameLabel)
@@ -1229,7 +1239,7 @@ $SearchNameName.AutoSize       = $true
 $SearchNameName.width          = 50
 $SearchNameName.height         = 20
 $SearchNameName.ForeColor      = "#ff0000"
-$SearchNameName.location       = New-Object System.Drawing.Point(200,30)
+$SearchNameName.location       = New-Object System.Drawing.Point(200,20)
 $SearchNameName.Font           = 'Microsoft Sans Serif,13,style=Bold'
 $SearchNameName.Visible        = $True
 $HideForm.Controls.Add($SearchNameName)
@@ -1243,12 +1253,19 @@ $HideForm.Controls.Add($SearchNameName)
     $OKButton.Text = "OK"
     $OKButton.Add_Click({
     
-    If ($checkbox1.CheckState -eq "Checked"){Write-host $checkbox1.CheckState -fore Green}
-    If ($checkbox1.CheckState -eq "Unchecked"){ Write-host $checkbox1.CheckState -fore Red}
+    If ($checkbox1.CheckState -eq "Checked"){Write-host $checkbox1.CheckState -fore Green
+     Get-ADuser -Identity $CN -property msExchHideFromAddressLists |Set-ADObject -Replace @{msExchHideFromAddressLists=$true}}
+    If ($checkbox1.CheckState -eq "Unchecked"){ Write-host $checkbox1.CheckState -fore Red
+    Get-ADuser -Identity $CN -property msExchHideFromAddressLists |Set-ADObject -Replace @{msExchHideFromAddressLists=$False
+    }}
     
-    $HideForm.Close()})
+    })
     $HideForm.Controls.Add($OKButton)
-	$OKButton.Add_Click({ HideFromGAL	})
+	$OKButton.Add_Click({
+    $HideForm.Close()
+    ActionForm
+    })
+    
  
     #Add a cancel button
     $CancelButton = new-object System.Windows.Forms.Button
@@ -1262,16 +1279,18 @@ $HideForm.Controls.Add($SearchNameName)
     #                                                     #
     # Do something when the state of the checkbox changes #
     #######################################################
+   <#
     $checkbox1.Add_CheckStateChanged({
    If ($checkbox1.CheckState -eq $False) { Write-host  "Hidden From GAL" $checkbox1.CheckState -fore Cyan}
    else { Write-host "Hidden From GAL" $checkbox1.CheckState -fore Yellow}
     })
-    
+    #>
     
     # Activate the form
     $HideForm.Add_Shown({$HideForm.Activate()})
     [void] $HideForm.ShowDialog() 
-}
+    }
+
 
 
 
